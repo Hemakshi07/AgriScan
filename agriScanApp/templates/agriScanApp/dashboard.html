@@ -1,12 +1,71 @@
+{% load static%}
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/dashboard.css' %}">
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome to the Dashboard</h1>
-    <ul>
-       
-    </ul>
+    <style>
+        .maincontent{
+            position: relative;
+            background-image: url("{% static 'agriScanApp/background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            backdrop-filter: blur(20px);
+        }
+        /* .subcontent{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            filter: blur(5px);
+        } */
+    </style>
+    <div class="navbar">
+        <ul class="navlist">
+        <div class="navlistdiv">
+            <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+            <div class="navigators">
+                <li class="nav"><div class="navdiv"><a href="#about-us" class="aboutus">About Us</a></div></li>   
+                <li class="nav"><div class="navdiv"><a href="#services" class="services">Services</a></div></li>
+                <li class="nav"><div class="navdiv"><a href="#contact-us" class="contactus">Contact Us</a></div></li>
+                <li class="nav"><div class="navdiv"><a href="#login" class="login">Login</a></div></li>
+            </div>
+        </div>
+        </ul>
+    </div>
+    <div class="maincontent">
+        <!-- <div class="subcontent"></div> -->
+        <section id="about-us" class="aboutuscontent">
+            <!-- <h1>About Us</h1> -->
+            <h2>{{ about_us_data.title }}</h2>
+            <p style="font-size: 18px;">{{ about_us_data.content }}</p>
+        </section>
+        <section id="services" class="servicescontent">
+            <h1>Our Services</h1>
+            <ul >
+                {% for service in services_data %}
+                    <li style="font-size: 23px;" ><strong>{{ service.title }}</strong></li>
+                    <p style="font-size: 19px;">{{ service.description }}</p>
+                {% endfor %}
+            </ul>
+        </section>
+    
+        <section id="contact-us" class="contactuscontent">
+            <h1>Contact Us</h1>
+            <ul style="font-size: 20px;" >
+                {% for contactus in contact_us_data %}
+                <li><strong>{{ contactus.title }}</strong></li>
+                <p style="font-size: 16px;"></p>{{ contactus.description }}</p>
+                    
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
 </body>
 </html>

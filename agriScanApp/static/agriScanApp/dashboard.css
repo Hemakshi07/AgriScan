@@ -1,0 +1,99 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+}
+
+.navbar{
+    background-color:rgb(88, 101, 88); 
+    /* color:darkgreen ;  */
+    /* padding: 5px;  */
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.agriscan{
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(122, 191, 19) 
+}
+
+.nav{
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    /* color: #fff;  */
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s; 
+}
+
+.navdiv{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    text-decoration: none;
+}
+.navlistdiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.navigators{
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+.aboutus:hover{
+    color: rgb(66, 65, 65); 
+}
+.contactus:hover{
+    color: rgb(66, 65, 65); 
+}
+.services:hover{
+    color: rgb(66, 65, 65); 
+}
+.login:hover {
+    /* margin-top: 200px; */
+    color: rgb(66, 65, 65); 
+}
+.aboutus {
+    margin-top: 100px;
+    color: rgb(101, 99, 99);
+    text-decoration: none;
+}
+.contactus{
+    margin-top: 100px;
+    color: rgb(101, 99, 99);
+    text-decoration: none;
+}
+
+.services{
+    margin-top: 100px;
+    color: rgb(101, 99, 99);
+    text-decoration: none;
+}
+.login{
+    margin-top: 100px;
+    color: rgb(101, 99, 99);
+    text-decoration: none;
+}
+/* .aboutus p {
+    font-size: 20px;
+} */
+
+.maincontent{
+    
+}

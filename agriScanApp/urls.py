@@ -6,9 +6,10 @@ from django.contrib.auth import views as auth_views
 app_name = 'agriScanApp'
 
 urlpatterns = [
-    path('hello/', views.hello, name='hello'),
     # path('login/', views.LoginView, name='login'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-   
+    path('', views.dashboard, name='dashboard'),
+    # path('aboutus/', views.aboutus, name='aboutus'),
+    # path('contactus/', views.contactus, name='contactus'),
+    # path('services/', views.services, name='services'),
 
 ]
