@@ -11,5 +11,7 @@ urlpatterns = [
     # path('aboutus/', views.aboutus, name='aboutus'),
     # path('contactus/', views.contactus, name='contactus'),
     # path('services/', views.services, name='services'),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.registration, name='registration'),
 
 ]

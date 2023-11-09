@@ -5,11 +5,14 @@ html{
 body{
     margin: 0;
 }
-
+.container{
+    display: flex;
+    flex-direction: column;
+}
 .navbar{
     background-color:rgb(88, 101, 88); 
     /* color:darkgreen ;  */
-    /* padding: 5px;  */
+    padding: 5px; 
 }
 
 .navlist{
@@ -94,6 +97,45 @@ body{
     font-size: 20px;
 } */
 
-.maincontent{
-    
+.aboutustitle{
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px 0px 0px 150px;
+}
+.aboutsusdata{
+    overflow-wrap: break-word;
+    font-size: 22px;
+    margin: 20px 150px 0px 150px;
+}
+.aboutuscontent{
+    /* background-color: white; */
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.servicescontent{
+    /* background-color: white; */
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.contactuscontent{
+    /* background-color: white; */
+    margin-bottom: 20px;
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 20px;
 }

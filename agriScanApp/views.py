@@ -40,7 +40,7 @@ def dashboard(request):
             {'title': ' Food Inspection and Testing', 'description': 'Conduct regular inspections of food products at various stages of production.  '
                                                                      'Perform quality tests to ensure that food products meet safety and quality standards.  '
                                                                      'heck for contaminants, pathogens, and adulterants.'},
-            {'title': 'Data Analysis and Reporting:', 'description': 'Collect, analyze, and report data on quality and safety metrics.Use data to make informed decisions and improve processes.'},
+            # {'title': 'Data Analysis and Reporting:', 'description': 'Collect, analyze, and report data on quality and safety metrics.Use data to make informed decisions and improve processes.'},
             # Add more services as needed
         ],
         'contact_us_data':[
@@ -50,3 +50,55 @@ def dashboard(request):
         ],
     }
     return render(request, 'agriScanApp/dashboard.html', context)
+
+def login_view(request):
+    # if request.method == 'POST':
+    #     form = LoginForm(request.POST)
+    #     if form.is_valid():
+    #         username = form.cleaned_data['username']
+    #         password = form.cleaned_data['password']
+    #         user_type = form.cleaned_data['user_type']
+
+    #         # Authenticate user
+    #         user = authenticate(request, username=username, password=password)
+
+    #         if user is not None:
+                
+    #             if user_type == 'Student':
+    #                 login(request, user)
+    #                 return redirect('agriScanApp:student_dashboard')  # Redirect to student dashboard
+    #             elif user_type == 'Professor':
+    #                 login(request, user)
+    #                 if user.groups.filter(name='Professor').exists():
+    #                     return redirect('agriScanApp:course_dashboard')  # Redirect to teacher dashboard
+    #                 else:
+    #                     return render(request, 'agriScanApp/login.html', {'form': form, 'error_message': 'Invalid User'})
+    # else:
+    #     form = LoginForm()
+
+    return render(request, 'agriScanApp/login.html')
+
+def registration(request):
+    # if request.method == 'POST':
+    #     # form = CustomUserCreationForm(request.POST)
+    #     form = RegistrationForm(request.POST)
+    #     if form.is_valid():
+    #         sid = form.cleaned_data['sid']
+    #         name = form.cleaned_data['name']
+    #         email = form.cleaned_data['email']
+    #         username = form.cleaned_data['username']
+    #         password = form.cleaned_data['password']
+    #         membership_type = form.cleaned_data['membership_type']
+
+    #         user = User.objects.create_user(username=username, password=password)
+    #         user.email = email
+    #         user.first_name = name
+    #         user.save()
+
+    #         return redirect('agriScanApp:login')  # Redirect to a success page
+    # else:
+    #     # form = CustomUserCreationForm()
+    #     form = RegistrationForm()
+
+    return render(request, 'agriScanApp/registration.html')
+
