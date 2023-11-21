@@ -1,0 +1,70 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/dashboard.css' %}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <style>
+        .maincontent{
+            /* position: relative; */
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* align-content: space-between; */
+            /* justify-content: space-between; */
+            /* background-image: url("{% static 'agriScanApp/background.jpeg' %}");
+            background-size: cover;
+            backdrop-filter: blur(10px);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.5); */
+            /* z-index: -1; */
+            /* height: 100vh; */
+            position: relative;
+            width: 100%; 
+            height: 100vh;
+            margin: 0;
+        }
+        .background-image {
+            background-image: url("{% static 'agriScanApp/background.jpeg' %}");
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+        }
+        .background-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(34, 34, 34, 0.7); /* Light black with some transparency */
+            z-index: 1; /* Place it above the background image */
+        }
+        .text-content {
+            position: relative;
+            z-index: 2; /* Place it above the overlay */
+            text-align: center;
+            height: 100vh;
+            color: white; /* Set the text color to contrast with the background */
+            /* padding: 20px; */
+        }
+    </style>
+
+<div class="container">
+    <div class="navbar">
+        <ul class="navlist">
+            <div class="navlistdiv">
+            <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+            <div class="navigators">
+ 
+                <li class="nav"><div class="navdiv"><a href="{% url 'agriScanApp:dashboard' %}" class="login">Logout</a></div></li>
+            </div>
+            </div>
+        </ul>
+    </div>
+</div>

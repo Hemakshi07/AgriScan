@@ -15,7 +15,8 @@
         background: rgba(238, 174, 202, 0.7); /* 70% opacity */
         background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
         font-family: Arial, sans-serif; /* Use a different font for better readability */
-        max-width: 400px;
+        max-width: 500px;
+        height: 600px;
         /* border: 2px solid #3498db; */
         border-radius: 40px;
         padding: 20px;
@@ -26,11 +27,22 @@
         height: 150px;
         margin-left: 80px;
     }
-    .login-form {
+    /* .login-form {
         max-width: 400px;
         margin: auto;
         background-color: rgba(255, 255, 255, 0.9);
-        /* border: 2px solid #3498db; */
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    } */
+    .login-form {
+        max-width: 400px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.9);
         border-radius: 15px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -58,51 +70,102 @@
         cursor: pointer;
     }
     .registerbtn {
-        margin-left: 110px;
+        margin-left: 90px;
+        margin-right: 90px;
         border-radius: 30px;
         padding: 5px 20px;
-        background-color: #0dcaf0;
+        background-color: rgb(92, 136, 25);
         color: white;
         border: none;
+        font-size: 20px;
+        font-weight: bold;
     }
     .registerTitle{
         text-align: center;
         color: white; 
     }
+    .agriscan{
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(92, 136, 25);
+    }
+    .title{
+        color: white;
+        text-align: center;
+    }
+    .name{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .email{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .username{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .validators{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 250px; */
+        margin-left: 210px;
+        color: red;
+    }
+    .password{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .passval{
+        list-style: none;
+        color: red;
+        margin-left: 170px;
+    }
 </style>
 <div class="container maincontent">
-        <!-- <img src="{% static 'agriScanApp/logo.png' %}" alt="logo" class="custom-img"> -->
-                        <h2 class="registerTitle">REGISTER</h2>
-                        <form method="post" class="bg-white rounded-5 p-4">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="{{ form.name.id_for_label }}">Name:</label>
-                                <!-- {{ form.name }} -->
-                                <input type="text" class="form-control" id="name" name="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="{{ form.email.id_for_label }}">Email:</label>
-                                <!-- {{ form.email }} -->
-                                <input type="text" class="form-control" id="email" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="{{ form.username.id_for_label }}">Username:</label>
-                                <!-- {{ form.username }} -->
-                                <input type="text" class="form-control" id="username" name="username">
-                                <ul>
-                                <li>Username must have at least 6 characters.</li>
-                                </ul>
-                            </div>
-                            <div class="form-group">
-                                <label for="{{ form.password.id_for_label }}">Password:</label>
-                                <!-- {{ form.password }} -->
-                                <input type="text" class="form-control" id="password" name="password">
-                                <ul>
-                                <li>Password must be 8 characters long.</li>
-                                <li>4 must be alphabet, one special character,one number</li>
-                                </ul>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-2 registerbtn">Register</button>
-                        </form>
+    <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+                    <h2 class="card-title text-center mb-3 rounded-top-5 title">REGISTER</h2>
+                    <form method="post" class="login-form bg-white rounded-5 p-4">
+                        {% csrf_token %}
+                        <div class="form-group name">
+                            <label for="{{ form.name.id_for_label }}">Name:</label>
+                            <div>{{ form.name }}</div>
+                        </div>
+                        <div class="form-group email">
+                            <label for="{{ form.email.id_for_label }}">Email:</label>
+                            <div>{{ form.email }}</div>
+                        </div>
+                        <div class="form-group username">
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            <div>{{ form.username }}</div>
+                        </div>
+                        <div class="validators">Username must have at least 6 characters.</div>
+                        <div class="form-group password">
+                            <label for="{{ form.password.id_for_label }}">Password:</label>
+                            <div>{{ form.password }}</div>
+                        </div>
+                        <ul class="passval">
+                            <li>Password must be 8 characters long.</li>
+                            <li>4 must be alphabet, one special character,one number</li>
+                        </ul>
+                        <button type="submit" class="registerbtn">Register</button>
+                    </form>
 </div>
 

@@ -100,42 +100,62 @@ body{
 .aboutustitle{
     font-size: 40px;
     font-weight: bold;
-    margin: 20px 0px 0px 150px;
+    /* margin: 20px 0px 0px 150px; */
 }
 .aboutsusdata{
     overflow-wrap: break-word;
     font-size: 22px;
+    width: 1000px;
     margin: 20px 150px 0px 150px;
 }
 .aboutuscontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* background-color: white; */
     color: white;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-bottom: 20px; */
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
     border-radius: 20px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 20px;
 }
 
 .servicescontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* background-color: white; */
     color: white;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-bottom: 20px; */
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
     border-radius: 20px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 20px;
 }
 
+.servicesdata{
+    font-size: 19px;
+    width: 1000px;
+}
+
 .contactuscontent{
-    /* background-color: white; */
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgb(88, 101, 88);
+    /* margin-bottom: 20px; */
     color: white;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 20px;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+    /* border-radius: 20px; */
+    /* margin-top: 10px; */
+    /* padding: 20px; */
+}
+
+.email{
+    font-size: 20px;
+    list-style: none;
 }

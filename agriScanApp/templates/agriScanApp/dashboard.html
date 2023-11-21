@@ -47,10 +47,10 @@
         .text-content {
             position: relative;
             z-index: 2; /* Place it above the overlay */
-            /* text-align: center; */
+            text-align: center;
             height: 100vh;
             color: white; /* Set the text color to contrast with the background */
-            padding: 20px;
+            /* padding: 20px; */
         }
     </style>
     <div class="container">
@@ -79,19 +79,28 @@
                 <h1>Our Services</h1>
                 <ul>
                     {% for service in services_data %}
-                        <li style="font-size: 23px;" ><strong>{{ service.title }}</strong></li>
-                        <p style="font-size: 19px;">{{ service.description }}</p>
+                        <li style="font-size: 23px; list-style: none;" ><strong>{{ service.title }}</strong></li>
+                        <p class="servicesdata">{{ service.description }}</p>
                     {% endfor %}
                 </ul>
             </div>
             <div id="contact-us" class="contactuscontent">
-                <h1>Contact Us</h1>
-                <ul style="font-size: 20px;" >
-                    {% for contactus in contact_us_data %}
-                    <li><strong>{{ contactus.title }}</strong></li>
-                    <p style="font-size: 16px;"></p>{{ contactus.description }}</p>    
-                    {% endfor %}
-                </ul>
+                    <div>
+                        <h1>Contact Us</h1>
+                        <ul class="email">
+                            <!-- {% for contactus in contact_us_data %}
+                            <li><strong>{{ contactus.title }}</strong></li>
+                            <p style="font-size: 16px;"></p>{{ contactus.description }}</p>    
+                            {% endfor %} -->
+                            <li>patel8d6@uwindsor.ca</li>
+                            <li>raval53@uwindsor.ca</li>
+                            <li>jani32@uwindsor.ca</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h1>Follow us on </h1>
+                        <div></div>
+                    </div>
             </div>
             </div>
             </div>

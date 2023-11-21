@@ -13,5 +13,5 @@ urlpatterns = [
     # path('services/', views.services, name='services'),
     path('login/', views.login_view, name='login'),
     path('register/', views.registration, name='registration'),
-
+    path('home/', views.home, name='home')
 ]

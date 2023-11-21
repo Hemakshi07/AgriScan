@@ -5,7 +5,7 @@
         place-items: center;
         height: 100vh;
         background-color: rgba(255, 255, 255, 0.5);
-        background-image: url("{% static 'agriScanApp/background.jpeg' %}");
+        background-image: url("{% static 'agriScanApp/background.jpg' %}");
         background-repeat: no-repeat;
         background-size: cover;
         font-family: Arial, sans-serif;
@@ -16,17 +16,16 @@
         background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
         font-family: Arial, sans-serif; /* Use a different font for better readability */
         max-width: 400px;
-        height: 400px;
-        border: 2px solid #3498db;
+        height: 500px;
         border-radius: 40px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .maincontent .custom-img {
+    /* .maincontent .custom-img {
         max-width: 200px;
         height: 200px;
         margin-left: 80px;
-    }
+    } */
     .login-form {
         max-width: 400px;
         height: 200px;
@@ -35,7 +34,6 @@
         justify-content: space-around;
         margin: auto;
         background-color: rgba(255, 255, 255, 0.9);
-        border: 2px solid #3498db;
         border-radius: 15px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,24 +63,40 @@
 
     .register{
         margin-left: 40px;
-        margin-top: 10px;
+        margin-top: 50px;
     }
 
     .login{
         margin-left: 120px;
+        color: white;
+        font-size: 25px;
     }
     .loginbtn {
-        margin-left: 110px;
+        margin-left: 90px;
+        margin-right: 90px;
         border-radius: 30px;
-        padding: 5px 20px;
-        background-color: #0dcaf0;
+        padding: 5px 30px;
+        background-color: rgb(92, 136, 25);
         color: white;
+        font-weight: bold;
+        border: none;
+        font-size: 20px;
+    }
+    .agriscan{
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(92, 136, 25);
     }
 </style>
 
+
 <div class="container maincontent">
-    <!-- <img src="{% static 'agriScanApp/logo.png' %}" alt="logo" class="custom-img"> -->
-    <h3 class="login text-white">LOGIN</h3>
+    <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+    <h3 class="login">LOGIN</h3>
 {% if error_message %}
     <div class="alert alert-danger">{{ error_message }}</div>
 {% endif %}
@@ -96,14 +110,7 @@
         <label for="password">Password:</label>
         <input type="password" class="form-control" id="password" name="password">
     </div>
-        <!-- <div class="form-group">
-            <label for="user_type">Select User Type:</label>
-            <select class="form-control" id="user_type" name="user_type">
-                <option value="Student">Student</option>
-                <option value="Professor">Professor</option>
-            </select>
-        </div> -->
-    <button type="submit" class="btn btn-primary btn-block mt-3 loginbtn">Login</button>
+    <button type="submit" class="loginbtn">Login</button>
 </form>
 <div class="register">Don't have an Account? <a href="{% url 'agriScanApp:registration' %}">Register!</a></div>
 </div>
