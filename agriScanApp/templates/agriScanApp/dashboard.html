@@ -6,31 +6,17 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <script src="{% static 'agriScanApp/script.js' %}"></script>
     <style>
         .maincontent{
-            /* position: relative; */
-            /* display: flex; */
-            /* flex-direction: column; */
-            /* align-content: space-between; */
-            /* justify-content: space-between; */
-            /* background-image: url("{% static 'agriScanApp/background.jpeg' %}");
-            background-size: cover;
-            backdrop-filter: blur(10px);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.5); */
-            /* z-index: -1; */
-            /* height: 100vh; */
             position: relative;
             width: 100%; 
-            height: 100vh;
             margin: 0;
         }
         .background-image {
             background-image: url("{% static 'agriScanApp/background.jpeg' %}");
             background-size: cover;
             width: 100%;
-            height: 100vh;
             margin: 0;
         }
         .background-image::before {
@@ -39,18 +25,91 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             margin: 0;
-            background-color: rgba(34, 34, 34, 0.7); /* Light black with some transparency */
-            z-index: 1; /* Place it above the background image */
+            background-color: rgba(34, 34, 34, 0.7); 
+            z-index: 1; 
         }
         .text-content {
             position: relative;
-            z-index: 2; /* Place it above the overlay */
+            z-index: 2;
             text-align: center;
-            height: 100vh;
-            color: white; /* Set the text color to contrast with the background */
-            /* padding: 20px; */
+            height: 100%;
+            color: white; 
+        }
+        .teamcontent{
+            color: white;
+        }
+
+        .teamates{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+        .khushalicontent{
+            /* background-color: white; */
+            background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+            width: 300px;
+            height: 500px;
+            color: black;
+            border-radius: 20px;
+        }
+        .hemakshicontent{
+            /* background-color: white; */
+            background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+            width: 300px;
+            height: 500px;
+            color: black;
+            border-radius: 20px;
+        }
+        .rajvicontent{
+            /* background-color: white; */
+            background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+            width: 300px;
+            height: 500px;
+            color: black;
+            border-radius: 20px;
+        }
+        .hemsdata{
+            margin-top: 20px;
+            font-size: 20px;
+            /* font-weight: bold; */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .khushidata{
+            margin-top: 20px;
+            font-size: 20px;
+            /* font-weight: bold; */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .rajvidata{
+            margin-top: 20px;
+            font-size: 20px;
+            /* font-weight: bold; */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #0b1e32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .socialmedia{
+            display: flex;
+            align-items: center;
+        }
+        .followuscontent{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
     </style>
     <div class="container">
@@ -72,17 +131,40 @@
             <div class="text-content">
                 <div id="about-us" class="aboutuscontent">
                 <!-- <div> -->
-                    <p class="aboutustitle">{{ about_us_data.title }}</p>
-                    <p class="aboutsusdata">{{ about_us_data.content }}</p>
+                    <p class="aboutustitle">About Us</p>
+                    <p class="aboutsusdata">A website dedicated to revolutionizing the assessment of agri-food product quality through the integration 
+                        of cutting-edge technology. The focus of this initiative is on ensuring the quality and safety of agricultural and food products, 
+                        addressing the concerns of both industry stakeholders and consumers.
+                        In collaboration with "Agriculture and Agri-Food Canada / Government of Canada," 
+                        the website employs advanced techniques such as image recognition and data analysis. 
+                        These technologies are utilized to comprehensively evaluate various attributes of leaves, 
+                        encompassing factors like appearance, texture, color, and structural integrity. The integration of image recognition and 
+                        data analysis allows the system to conduct real-time and accurate assessments of leaves.
+                        The overarching goal of this technological approach is to enhance the quality control processes in the 
+                        agri-food industry. By leveraging sophisticated tools, the website aims to provide a thorough and precise evaluation 
+                        of agri-food products, offering valuable insights into their quality parameters. This approach is a collaborative effort 
+                        between the website and government authorities, emphasizing the importance of public-private partnerships in ensuring the 
+                        safety and quality of agricultural and food products.</p>
                 </div>
             <div id="services" class="servicescontent">
                 <h1>Our Services</h1>
-                <ul>
-                    {% for service in services_data %}
-                        <li style="font-size: 23px; list-style: none;" ><strong>{{ service.title }}</strong></li>
-                        <p class="servicesdata">{{ service.description }}</p>
-                    {% endfor %}
-                </ul>
+                <p style="font-size: 23px;" ><strong>Leaves Inspection and Testing</strong></p>
+                        <p class="servicesdata">In the realm of Leaves Inspection and Testing, a machine learning approach is applied to conduct rigorous quality assessments at various stages of leaf production. This innovative methodology leverages advanced algorithms and models to ensure a comprehensive and accurate evaluation of leaves, aiming to meet stringent safety and quality standards.
+
+                            The machine learning process begins with the acquisition of vast datasets comprising diverse leaf characteristics, encompassing aspects such as color, texture, size, and structural integrity. These datasets serve as the foundation for training machine learning models, enabling them to recognize patterns and correlations indicative of both desirable and undesirable leaf attributes.
+                            
+                            The quality testing process involves the deployment of machine learning algorithms capable of identifying contaminants, pathogens, and adulterants that may compromise the safety and quality of the leaves. These algorithms are trained to distinguish between normal variations in leaf characteristics and irregularities that may pose risks to human health or indicate a decrease in product quality.
+                            
+                            Image recognition plays a crucial role in this approach, as the machine learning models are trained to analyze visual information captured through high-resolution images of leaves. By assessing factors such as discoloration, irregular patterns, or physical damage, the system can identify potential issues that might not be easily detectable through traditional inspection methods.
+                            
+                            Furthermore, the machine learning models can adapt and improve over time through continuous learning. As more data becomes available and additional insights are gained from the inspection process, the algorithms can refine their understanding of what constitutes a high-quality leaf, enhancing the overall accuracy and efficiency of the quality testing system.
+                            
+                            Ultimately, the integration of machine learning in leaves inspection and testing not only ensures the timely identification of contaminants and pathogens but also contributes to a more robust and proactive quality control system. This approach aligns with the industry's commitment to leveraging cutting-edge technologies to safeguard the integrity and safety of agricultural products throughout the production cycle.</p>
+                <!-- <ul> -->
+                    <!-- {% for service in services_data %} -->
+                        
+                    <!-- {% endfor %} -->
+                <!-- </ul> -->
             </div>
             <div id="contact-us" class="contactuscontent">
                     <div>
@@ -92,18 +174,64 @@
                             <li><strong>{{ contactus.title }}</strong></li>
                             <p style="font-size: 16px;"></p>{{ contactus.description }}</p>    
                             {% endfor %} -->
-                            <li>patel8d6@uwindsor.ca</li>
-                            <li>raval53@uwindsor.ca</li>
-                            <li>jani32@uwindsor.ca</li>
+                            <li>patelkhushali4200@gmail.com</li>
+                            <li>hemsjani2001@gmail.com</li>
+                            <li>ravalrajvi1999@gmail.com</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="followuscontent">
                         <h1>Follow us on </h1>
-                        <div></div>
+                        <div class="socialmedia">
+                            <img src="{% static 'agriScanApp/linkedin.png' %}" alt="logo" width="30" height="30">
+                            <img src="{% static 'agriScanApp/instagram.png' %}" alt="logo" width="40" height="40">
+                            <img src="{% static 'agriScanApp/facebook.png' %}" alt="logo" width="40" height="40">
+                        </div>
                     </div>
             </div>
+            <div class="teamcontent">
+                <h1>Our Team</h1>
+                <div class="teamates">
+                    <div class="khushalicontent">
+                        <img src="{% static 'agriScanApp/khushali.jpg' %}" alt="logo" width="300" height="270" style="border-radius: 20px 20px 0px 0px;">
+                        <div class="khushidata">
+                            <div style="font-weight: bold;">Khushali Patel</div>
+                            <div>Frontend Developer</div>
+                            <div>patelkhushali4200@gmail.com</div>
+                            <div style="display: flex; align-content: center; justify-content: space-evenly;">
+                                <img src="{% static 'agriScanApp/linkedin.png' %}" alt="logo" width="30" height="30">
+                                <a href="https://www.linkedin.com/in/khushalipatel42/" style="color: #0A66C2;">khushalipatellinkedin</a>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="hemakshicontent">
+                        <img src="{% static 'agriScanApp/hemakshi.jpg' %}" alt="logo" width="300" height="270" style="border-radius: 20px 20px 0px 0px;">
+                        <div class="hemsdata">
+                            <div style="font-weight: bold;">Hemakshi Jani</div>
+                            <div>ML Developer</div>
+                            <div>hemsjani2001@gmail.com</div>
+                            <div style="display: flex; align-content: center; justify-content: space-evenly;">
+                                <img src="{% static 'agriScanApp/linkedin.png' %}" alt="logo" width="30" height="30">
+                                <a href="https://www.linkedin.com/in/hemakshi-jani07/" style="color: #0A66C2;">hemakshijanilinkedin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rajvicontent">
+                        <img src="{% static 'agriScanApp/rajvi.jpeg' %}" alt="logo" width="300" height="270" style="border-radius: 20px 20px 0px 0px;">
+                        <div class="rajvidata">
+                            <div style="font-weight: bold;">Rajvi Raval</div>
+                            <div>Frontend Developer</div>
+                            <div>ravalrajvi1999@gmail.com</div>
+                            <div style="display: flex; align-content: center; justify-content: space-evenly;">
+                                <img src="{% static 'agriScanApp/linkedin.png' %}" alt="logo" width="30" height="30">
+                                <a href="https://www.linkedin.com/in/raval-rajvi/" style="color: #0A66C2;">rajviravallinkedin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             </div>
+            </div>
+            <button id="backToTopBtn" type="button" onclick="scrollToTop()">Back to Top</button>
         </div>
     </div>
 </body>

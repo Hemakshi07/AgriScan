@@ -159,3 +159,16 @@ body{
     font-size: 20px;
     list-style: none;
 }
+
+.teamcontent{
+    color: white;
+}
+
+.teamates{
+    display: flex;
+    flex-direction: column;
+}
+
+.khushalicontent{
+    background-color: white;
+}
