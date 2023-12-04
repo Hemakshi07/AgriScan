@@ -1,0 +1,125 @@
+.navbar{
+    background-color:rgb(88, 101, 88); 
+    padding: 5px; 
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.nav{
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s; 
+}
+
+.navdiv{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    text-decoration: none;
+}
+.navlistdiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.navigators{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.maincontent{
+    background: rgba(238, 174, 202, 0.7); /* 70% opacity */
+    background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+    font-family: Arial, sans-serif; /* Use a different font for better readability */
+    max-width: 350px;
+    height: 500px;
+    margin-left: 600px;
+    margin-top: 100px;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    max-width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.login-form .form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+.login-form .btn-primary {
+    background-color: #3498db;
+    border: none;
+    padding: 10px 20px;
+}
+.login-form .btn-primary:hover {
+    background-color: #2980b9;
+}
+.login-form .form-group select {
+    appearance: none;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.register{
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+.login{
+    margin-left: 140px;
+    color:rgb(92, 136, 25);
+    font-size: 35px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.loginbtn {
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius: 30px;
+    padding: 5px 30px;
+    background-color: rgb(92, 136, 25);
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 20px;
+}
+.agriscan{
+display: flex;
+justify-content: center;
+align-items: center;
+font-weight: bold;
+font-size: 50px;
+color:rgb(122, 191, 19) 
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.agrilink{
+    text-decoration: none;
+}

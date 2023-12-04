@@ -1,75 +1,89 @@
-
 {% load static %}
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/dashboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/home.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Home</title>
 </head>
 <body>
     <style>
-        .maincontent{
-            /* position: relative; */
-            /* display: flex; */
-            /* flex-direction: column; */
-            /* align-content: space-between; */
-            /* justify-content: space-between; */
-            /* background-image: url("{% static 'agriScanApp/background.jpeg' %}");
-            background-size: cover;
-            backdrop-filter: blur(10px);
-            background-position: center;
+        body{
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url("{% static 'agriScanApp/leaves.jpeg' %}");
             background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.5); */
-            /* z-index: -1; */
-            /* height: 100vh; */
-            position: relative;
-            width: 100%; 
-            height: 100vh;
-            margin: 0;
-        }
-        .background-image {
-            background-image: url("{% static 'agriScanApp/background.jpeg' %}");
             background-size: cover;
+        }
+        .navcontainer{
+            background-color:rgb(88, 101, 88); 
+            padding: 5px; 
+        }
+        .maincontainer{ 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
             height: 100vh;
-            margin: 0;
-        }
-        .background-image::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            margin: 0;
-            background-color: rgba(34, 34, 34, 0.7); /* Light black with some transparency */
-            z-index: 1; /* Place it above the background image */
-        }
-        .text-content {
-            position: relative;
-            z-index: 2; /* Place it above the overlay */
-            text-align: center;
-            height: 100vh;
-            color: white; /* Set the text color to contrast with the background */
-            /* padding: 20px; */
         }
     </style>
-
-<div class="container">
-    <div class="navbar">
-        <ul class="navlist">
+    <div class="navcontainer">
+        <!-- <div class="navlist"> -->
             <div class="navlistdiv">
-            <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+            <a href="{% url 'agriScanApp:dashboard' %}" class="agrilink"><li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li></a>
             <div class="navigators">
- 
-                <li class="nav"><div class="navdiv"><a href="{% url 'agriScanApp:dashboard' %}" class="login">Logout</a></div></li>
+                <button class="myaccount" id="myAccountBtn" data-toggle="modal" data-target="#userDetailsModal">
+                    <img src="{% static 'agriScanApp/myaccount.png' %}" alt="logo" width="30" height="27" style="border-radius: 20px 20px 0px 0px;">
+                </button>
+                <div class="navdiv"><a href="{% url 'agriScanApp:dashboard' %}" class="login">Logout</a></div>
+            <!-- </div> -->
             </div>
-            </div>
-        </ul>
+        </div>
+    </div>
+<div class="maincontainer">
+    <div class="agrititle">Welcome to AgriScan</div>
+    <!-- <img src="{% static 'confusion_matrix.png' %}" alt="confusion matrix"> -->
+    <div class="btncontainer">
+        <p class="accuracy">Machine Learning Accuracy: {{ accuracy }}</p>
+        <div class="chartscontainer">
+            <button id="matrixButton" class="matrix">Matrix</button>
+            <!-- <button class="charts">Charts</button> -->
+        </div>
     </div>
 </div>
-<h1>Welcome to AgriScan</h1>
 
-<p>Machine Learning Accuracy: {{ accuracy }}</p>
+
+
+<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome {{ user.name }}!</p>
+                <p>Username: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById("matrixButton").addEventListener("click", function() {
+        // Specify the URL you want to redirect to
+        var targetUrl = "{% url 'agriScanApp:charts' %}";  // Replace 'matrix_view_name' with your actual view name
+        window.location.href = targetUrl;
+    });
+</script>
 </body>
 </html>
+

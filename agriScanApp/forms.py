@@ -6,7 +6,6 @@ class RegistrationForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
     username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}),
         validators=[validate_username_length])
-    # username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label="Password",widget=forms.PasswordInput(attrs={'class': 'form-control'}),validators=[validate_password])
 
 class LoginForm(forms.Form):

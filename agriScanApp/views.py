@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
@@ -19,6 +18,7 @@ import matplotlib.pyplot as plt
 from .ML import MLModel
 from sklearn.metrics import confusion_matrix, accuracy_score
 import seaborn as sns
+
 @login_required
 def home(request):
     accuracy = request.session.get('ml_accuracy', None)
@@ -31,19 +31,6 @@ def home(request):
     return render(request, 'agriScanApp/home.html', context)
 
 def dashboard(request):
-    # context = {
-    #     'about_us_data': {
-    #         'title': 'About Us ',
-    #         'content': 'Ensuring the quality and safety of agri-food products is a critical concern for both industry stakeholders and consumers.' 
-    #                    'This website seeks to revolutionize the assessment of agri-food product quality by harnessing cutting-edge technology.'
-    #                    ' In partnership with "Agriculture and Agri-Food Canada / Government of Canada," this website combines image recognition and data analysis techniques.'
-    #                    ' The system can comprehensively evaluate various aspects of leaves, including appearance, texture, color, and structural integrity, to provide real-time and accurate assessments of leaves.',
-    #     },
-    #     'services_data': [
-    #         {'title': ' Leaves Inspection and Testing', 'description': 'Conduct regular inspections of leaves at various stages.  '
-    #                                                                  'Perform quality tests to ensure that leaves meet safety and quality standards.  '
-    #                                                                  'heck for contaminants, pathogens, and adulterants.'},
-    # }
     return render(request, 'agriScanApp/dashboard.html')
 
 def login_view(request):
@@ -53,19 +40,9 @@ def login_view(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
-            # Authenticate user
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                # if user_type == 'Student':
-                    # login(request, user)
-                    # return redirect('SmartE_app:student_dashboard')  # Redirect to student dashboard
-                # elif user_type == 'Professor':
-                    # login(request, user)
-                    # if user.groups.filter(name='Professor').exists():
-                        # return redirect('SmartE_app:course_dashboard')  # Redirect to teacher dashboard
-                    # else:
-                        # return render(request, 'SmartE_app/login.html', {'form': form, 'error_message': 'Invalid User'})
                 login(request, user)
                 return redirect('agriScanApp:home')
             else:
@@ -75,36 +52,8 @@ def login_view(request):
 
     return render(request, 'agriScanApp/login.html', {'form': form})
 
-# def registration(request):
-#     # form = RegistrationForm()
-#     if request.method == 'POST':
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             # Check if the username already exists
-#             if User.objects.filter(username=username).exists():
-#                 return render(request, 'agriScanApp/registration.html', {'form': form, 'error_message': 'Username already exists. Choose a different one.'})
-
-#             # Continue with user creation if the username is unique
-#             name = form.cleaned_data['name']
-#             email = form.cleaned_data['email']
-#             password = form.cleaned_data['password']
-
-#             user = User.objects.create_user(username=username, password=password)
-#             user.email = email
-#             user.first_name = name
-#             user.save()
-
-#             # login(request, user)  # Automatically log in the user after registration
-#             return redirect('agriScanApp:login')  # Redirect to the home page or another success page
-#     else: 
-#         form = RegistrationForm()
-
-#     return render(request, 'agriScanApp/registration.html', {'form': form})
-
 @csrf_protect
 def registration(request):
-    # form = RegistrationForm()
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -159,9 +108,6 @@ def registration(request):
             plt.close()
 
             context = {'accuracy': accuracy}
-            # ml_model = MLModel()
-            # accuracy = ml_model.get_accuracy()
-            # request.session['ml_accuracy'] = accuracy
 
             login(request, user)  # Automatically log in the user after registration
             return redirect('agriScanApp:home')  # Redirect to the home page or another success page
@@ -169,3 +115,79 @@ def registration(request):
         form = RegistrationForm()
 
     return render(request, 'agriScanApp/registration.html', {'form': form})
+
+@login_required
+def get_user_details(request):
+    user = request.user
+    data = {
+        'name': user.name,
+        'username': user.username,
+        'email': user.email,
+        
+    }
+    return JsonResponse(data)
+
+
+def charts(request):
+    return render(request,'agriScanApp/charts.html')
+
+
+def chartsView(request):
+   chart_data = [
+    {'label': 'Apple___Apple_scab', 'value': 10},
+    {'label': 'Apple___Black_rot', 'value': 15},
+    {'label': 'Apple___Cedar_apple_rust', 'value': 8},
+    {'label': 'healthy', 'value': 20},
+    {'label': 'Soybean___healthy', 'value': 27},
+    {'label': 'Squash___Powdery_mildew', 'value': 10},
+    {'label': 'Strawberry___healthy', 'value': 26},
+    {'label': 'Strawberry___Leaf_scorch', 'value': 7},
+    {'label': 'Tomato___Bacterial_spot', 'value': 13},
+    {'label': 'Tomato___Early_blight', 'value': 16},
+    {'label': 'Tomato___healthy', 'value': 30},
+    {'label': 'Tomato___Late_blight', 'value': 14},
+    {'label': 'Tomato___Leaf_Mold', 'value': 8},
+    {'label': 'Tomato___Septoria_leaf_spot', 'value': 12},
+    {'label': 'Tomato___Spider_mites Two-spotted_spider_mite', 'value': 9},
+    {'label': 'Tomato___Target_Spot', 'value': 11},
+    {'label': 'Tomato___Tomato_mosaic_virus', 'value': 6},
+    {'label': 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'value': 7}]
+   labels = [data['label'] for data in chart_data]
+   values = [data['value'] for data in chart_data]
+   
+   chart_data2 = [
+    {'label1': 'January', 'value': 15},
+    {'label1': 'February', 'value': 28},
+    {'label1': 'March', 'value': 32},
+    {'label1': 'April', 'value': 19},
+    {'label1': 'May', 'value': 45},
+    {'label1': 'June', 'value': 60},
+    {'label1': 'July', 'value': 55},
+    {'label1': 'August', 'value': 72},
+    {'label1': 'September', 'value': 85},
+    {'label1': 'October', 'value': 62},
+    {'label1': 'November', 'value': 45},
+    {'label1': 'December', 'value': 30},]
+   values1 = [data['value'] for data in chart_data2]
+   chart_data3 = [
+    {'label1': 'January', 'value': 5},
+    {'label1': 'February', 'value': 18},
+    {'label1': 'March', 'value': 31},
+    {'label1': 'April', 'value': 29},
+    {'label1': 'May', 'value': 50},
+    {'label1': 'June', 'value': 30},
+    {'label1': 'July', 'value': 15},
+    {'label1': 'August', 'value': 62},
+    {'label1': 'September', 'value': 55},
+    {'label1': 'October', 'value': 12},
+    {'label1': 'November', 'value': 85},
+    {'label1': 'December', 'value': 50},]
+   labels1 = [data['label1'] for data in chart_data2]
+   values3 = [data['value'] for data in chart_data3]
+   return render(request, 'agriScanApp/charts.html',  {
+        'labels': labels,
+        'data': values,
+        'labels1':labels1,
+        'data1':values1,
+        'data2':values3
+    })

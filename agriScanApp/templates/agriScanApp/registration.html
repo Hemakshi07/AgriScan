@@ -1,146 +1,32 @@
 {% load static %}
-
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/registration.css' %}">
+    <title>Dashboard</title>
+</head>
 <style>
     body {
-        display: grid;
-        place-items: center;
-        background-color: rgba(255, 255, 255, 0.5);
-        background-image: url("{% static 'agriScanApp/background.jpeg' %}");
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        backdrop-filter: blur(5px);
-    }
-    .maincontent{
-        background: rgba(238, 174, 202, 0.7); /* 70% opacity */
-        background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
-        font-family: Arial, sans-serif; /* Use a different font for better readability */
-        max-width: 500px;
-        height: 600px;
-        /* border: 2px solid #3498db; */
-        border-radius: 40px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .maincontent .custom-img {
-        max-width: 150px;
-        height: 150px;
-        margin-left: 80px;
-    }
-    /* .login-form {
-        max-width: 400px;
-        margin: auto;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    } */
-    .login-form {
-        max-width: 400px;
-        height: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin: auto;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .login-form .form-control {
-        /* border: 1px solid #ddd; */
-        border-radius: 5px;
-        padding: 10px;
-    }
-    .login-form .btn-primary {
-        background-color: #3498db;
-        border: none;
-        padding: 10px 20px;
-    }
-    .login-form .btn-primary:hover {
-        background-color: #2980b9;
-    }
-    .login-form .form-group select {
-        appearance: none;
-        background-color: white;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        width: 100%;
-        cursor: pointer;
-    }
-    .registerbtn {
-        margin-left: 90px;
-        margin-right: 90px;
-        border-radius: 30px;
-        padding: 5px 20px;
-        background-color: rgb(92, 136, 25);
-        color: white;
-        border: none;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .registerTitle{
-        text-align: center;
-        color: white; 
-    }
-    .agriscan{
-    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 50px;
-    color:rgb(92, 136, 25);
-    }
-    .title{
-        color: rgb(92, 136, 25);
-        text-align: center;
-    }
-    .name{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .email{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .username{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .validators{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        /* width: 250px; */
-        margin-left: 210px;
-        color: red;
-    }
-    .password{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .passval{
-        list-style: none;
-        color: red;
-        margin-left: 170px;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url("{% static 'agriScanApp/background.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    backdrop-filter: blur(5px);
+    margin: 0;
     }
 </style>
-<div class="container maincontent">
-    <li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li>
+<div class="container">
+    <div class="navbar">
+        <div class="navlist">
+            <div class="navlistdiv">
+            <a href="{% url 'agriScanApp:dashboard' %}" class="agrilink"><div class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</div></a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="maincontent">
                     <h2 class="card-title text-center mb-3 rounded-top-5 title">Register</h2>
                     <form method="post" class="login-form bg-white rounded-5 p-4">
                         {% csrf_token %}
@@ -167,5 +53,6 @@
                         </ul>
                         <button type="submit" class="registerbtn">Register</button>
                     </form>
+                    <div class="register">Are you already registered? <a href="{% url 'agriScanApp:login' %}">Login!</a></div>
 </div>
 

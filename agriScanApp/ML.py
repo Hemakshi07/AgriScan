@@ -57,7 +57,3 @@ class MLModel:
         return self.accuracy
     def get_accuracy_graph_data(self):
         return ["Random Forest"], [self.accuracy]
-
-    # def predict(self, input_data):
-    #     # Your prediction code here
-    #     return self.rf_classifier.predict(input_data)
