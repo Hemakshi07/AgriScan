@@ -1,0 +1,194 @@
+.maincontent{
+    background: rgba(238, 174, 202, 0.7); 
+    background: radial-gradient(circle, rgba(238, 174, 202, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+    font-family: Arial, sans-serif; 
+    max-width: 500px;
+    margin-left: 500px;
+    margin-top: 50px;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.maincontent .custom-img {
+    max-width: 150px;
+    height: 150px;
+    margin-left: 80px;
+}
+
+.login-form {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.login-form .form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+.login-form .btn-primary {
+    background-color: #3498db;
+    border: none;
+    padding: 10px 20px;
+}
+.login-form .btn-primary:hover {
+    background-color: #2980b9;
+}
+.login-form .form-group select {
+    appearance: none;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.registerbtn {
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius: 30px;
+    padding: 5px 20px;
+    background-color: rgb(92, 136, 25);
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+.registerTitle{
+    text-align: center;
+    color: white; 
+}
+.agriscan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(122, 191, 19) 
+}
+.agrilink{
+    text-decoration: none;
+}
+.title{
+    color: rgb(92, 136, 25);
+    text-align: center;
+}
+.name{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.email{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.username{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.validators{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 210px;
+    color: red;
+}
+.password{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.passval{
+    list-style: none;
+    color: red;
+    margin-left: 170px;
+}
+.birthdate{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.phonenum{
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar{
+    background-color:rgb(88, 101, 88); 
+    padding: 5px; 
+}
+
+.navlist{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.nav{
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s; 
+}
+
+.navdiv{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    text-decoration: none;
+}
+.navlistdiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.navigators{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.birthdateinput{
+    width: 160px;
+}
+
+.phoneinput{
+    width: 160px;
+}
+
+.register{
+    margin-left: 130px;
+    margin-top: 30px;
+}

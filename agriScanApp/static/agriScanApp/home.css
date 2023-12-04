@@ -1,0 +1,132 @@
+.maincontent{
+    position: relative;
+    width: 100%; 
+    height: 100vh;
+    margin: 0;
+}
+.background-image {
+    background-image: url("{% static 'agriScanApp/background.jpeg' %}");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+.background-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-color: rgba(34, 34, 34, 0.7); /* Light black with some transparency */
+    z-index: 1; /* Place it above the background image */
+}
+.text-content {
+    position: relative;
+    z-index: 2; /* Place it above the overlay */
+    text-align: center;
+    height: 100vh;
+    color: white; /* Set the text color to contrast with the background */
+}
+.agrilink{
+    text-decoration: none;
+}
+.navigators{
+    display: flex;
+    width: 130px;
+    justify-content: space-between;
+    height: 40px;
+}
+.myaccount{
+    border-radius: 25px;
+    background-color: white;
+}
+
+.navdiv{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    /* color: #fff;  */
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s; 
+}
+.navlistdiv{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+ .login{
+    color: rgb(101, 99, 99);    
+    text-decoration: none;
+ }
+
+ .login:hover{
+    color: rgb(66, 65, 65);
+    text-decoration: none;
+ }
+
+.agrilink{
+    text-decoration: none;
+}
+.agrilink:hover{
+    text-decoration: none;
+}
+.agriscan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(122, 191, 19) 
+}
+
+.agriscan:hover{
+    text-decoration: none;
+    list-style: none;
+}
+
+.agrititle{
+    background: radial-gradient(circle, rgba(174, 238, 192, 0.7) 0%, rgba(188, 200, 227, 0.7) 100%);
+    text-align: center;
+    font-size: 30px;
+    width: fit-content;
+    margin-top: 100px;
+    font-weight: bold;
+    color: rgb(101, 99, 99);;
+    padding: 15px 50px;
+    border-radius: 20px;
+}
+
+.btncontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-top: 100px;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}
+
+.accuracy{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.matrix{
+    border-radius: 30px;
+    padding: 5px 30px;
+    background-color: rgb(92, 136, 25);
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 20px;
+}

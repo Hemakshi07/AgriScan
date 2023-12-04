@@ -1,0 +1,107 @@
+.maincontent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.navdiv{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s;
+}
+.navcontainer{
+    background-color:rgb(88, 101, 88); 
+    padding: 5px; 
+}
+.navlistdiv{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.agrilink{
+    text-decoration: none;
+}
+.agrilink:hover{
+    text-decoration: none;
+}
+.agriscan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    color:rgb(122, 191, 19) 
+}
+
+.agriscan:hover{
+    text-decoration: none;
+    list-style: none;
+}
+
+.navigators{
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    height: 40px;
+}
+.myaccount{
+    border-radius: 25px;
+    background-color: white;
+}
+
+.login{
+    color: rgb(101, 99, 99);    
+    text-decoration: none;
+}
+
+ .login:hover{
+    color: rgb(66, 65, 65);
+    text-decoration: none;
+}
+
+.linechart{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 700px;
+    height: 600px;
+    border-radius: 20px;
+}
+.chartscontainer{
+    height: 650px;
+    background-color: white;
+    border-radius: 20px;
+}
+.chartsbtn{
+    margin-top: 20px;
+    text-align: center;
+}
+.matrixcontainer{
+    background-color: white;
+    width: 700px;
+    height: 650px;
+    border-radius: 20px;
+}
+.confusionmatrix{
+    border-radius: 20px;
+}
+
+#toggleLineChart, #togglePieChart, #toggleBarChart{
+    padding: 10px;
+    background-color: rgb(122, 191, 19);
+    border-radius: 15px;
+    list-style: none;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px; 
+    transition: color 0.3s; 
+}

@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'agriScanApp/charts.css' %}">
+    <title>Dashboard</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url("{% static 'agriScanApp/leaves.jpeg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navcontainer">
+                <div class="navlistdiv">
+                <a href="{% url 'agriScanApp:dashboard' %}" class="agrilink"><li class="agriscan"><img src="{% static 'agriScanApp/logo.png' %}" alt="logo" width="70" height="70">griScan</li></a>
+                <div class="navigators">
+                    <button class="myaccount" id="myAccountBtn" data-toggle="modal" data-target="#userDetailsModal">
+                        <img src="{% static 'agriScanApp/myaccount.png' %}" alt="logo" width="30" height="27" style="border-radius: 20px 20px 0px 0px;">
+                    </button>
+                    <div class="navdiv"><a href="{% url 'agriScanApp:dashboard' %}" class="login">Logout</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="maincontent">
+            <div class="chartscontainer">
+                <div class="chartsbtn">
+                    <button id="toggleLineChart">Line Chart</button>
+                    <button id="togglePieChart">Pie Chart</button>
+                    <button id="toggleBarChart">Bar Chart</button>
+                </div>
+                <div class="background-image">
+                    <div class="text-content">
+                        <div id="lineChartContainer" class="linechart">
+                            <h1 style="color: black; text-align: center;">Line Chart of affected fruits(%) by month</h1>
+                            <div>
+                                <canvas id="lineChart" width="500" height="350"></canvas>
+                            </div>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script>
+                                 const ctxLine = document.getElementById('lineChart');
+                                new Chart(ctxLine, {
+                                    type: 'line',
+                                    data: {
+                                        labels: {{ labels1|safe }},
+                                        datasets: [{
+                                            label: 'Months',
+                                            data: {{ data1|safe }},
+                                            borderWidth: 2,
+                                            borderColor: 'rgba(255, 99, 132, 1)', // Line color
+                                            backgroundColor: 'rgba(255, 99, 132, 0.2)', // Area color
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        },
+                                        plugins: {
+                                            legend: {
+                                                display: false // Hide legend
+                                            },
+                                            datalabels: {
+                                                anchor: 'end',
+                                                align: 'top',
+                                                formatter: function (value, context) {
+                                                    return value; // Display the data value as the label
+                                                },
+                                                font: {
+                                                    weight: 'bold'
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <div id="pieChartContainer" style="display: none;">
+                            <h1 style="color: black;">Pie Chart showing percentage of diseases</h1>
+                            <div>
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script>
+                                    var ctxPie = document.getElementById('pieChart').getContext('2d');
+                                new Chart(ctxPie, {
+                                    type: 'pie',
+                                    data: {
+                                        labels: {{ labels|safe }},
+                                        datasets: [{
+                                            data: {{ data|safe }},
+                                            backgroundColor: [
+                                                    'rgba(128, 0, 0, 0.5)',    // Dark red
+                                                    'rgba(0, 0, 128, 0.5)',    // Dark blue
+                                                    'rgba(128, 128, 0, 0.5)',  // Dark yellow
+                                                    'rgba(0, 128, 128, 0.5)',  // Dark teal
+                                                    'rgba(128, 0, 128, 0.5)',  // Dark purple
+                                                    'rgba(255, 128, 0, 0.5)'   // Dark orange
+                                                ],
+                                                borderColor: [
+                                                    'rgba(128, 0, 0, 1)',    // Dark red
+                                                    'rgba(0, 0, 128, 1)',    // Dark blue
+                                                    'rgba(128, 128, 0, 1)',  // Dark yellow
+                                                    'rgba(0, 128, 128, 1)',  // Dark teal
+                                                    'rgba(128, 0, 128, 1)',  // Dark purple
+                                                    'rgba(255, 128, 0, 1)'   // Dark orange
+                                                ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'My Pie Chart',
+                                            fontSize: 16,
+                                        },
+                                    }
+                                });
+                            </script>
+                        <div id="barChartContainer" style="display: none;">
+                            <h1 style="color: black;">Bar Chart showing the Comparison between 2018 vs 2019</h1>
+                            <div>
+                                <canvas id="barChart" style="height: 100;"></canvas>
+                            </div>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        
+                            <script>
+                                const ctxBar = document.getElementById('barChart');
+                                new Chart(ctxBar, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: {{ labels1|safe }},
+                                        datasets: [{
+                                            label: '2019',
+                                            data: {{ data1|safe }},
+                                            borderWidth: 1
+                                        }, {
+                                            label: '2018',
+                                            data: {{ data2|safe }},
+                                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                            borderColor: 'rgba(54, 162, 235, 1)',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            x: {
+                                                stacked: true
+                                            },
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        },
+                                        plugins: {
+                                            legend: {
+                                                position: 'top'
+                                            },
+                                            datalabels: {
+                                                anchor: 'end',
+                                                align: 'top',
+                                                formatter: function (value, context) {
+                                                    return value;
+                                                },
+                                                font: {
+                                                    weight: 'bold'
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                           
+                            </script>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="matrixcontainer">
+                <img src="{% static 'confusion_matrix.png' %}" alt="confusion matrix" width="700" height="600" class="confusionmatrix">    
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lineChartContainer = document.getElementById("lineChartContainer");
+            const pieChartContainer = document.getElementById("pieChartContainer");
+            const barChartContainer = document.getElementById("barChartContainer");
+
+            const toggleLineChartButton = document.getElementById("toggleLineChart");
+            const togglePieChartButton = document.getElementById("togglePieChart");
+            const toggleBarChartButton = document.getElementById("toggleBarChart");
+
+            toggleLineChartButton.addEventListener("click", function () {
+                lineChartContainer.style.display = "block";
+                pieChartContainer.style.display = "none";
+                barChartContainer.style.display = "none";
+            });
+
+            togglePieChartButton.addEventListener("click", function () {
+                lineChartContainer.style.display = "none";
+                pieChartContainer.style.display = "block";
+                barChartContainer.style.display = "none";
+            });
+
+            toggleBarChartButton.addEventListener("click", function () {
+                lineChartContainer.style.display = "none";
+                pieChartContainer.style.display = "none";
+                barChartContainer.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>
